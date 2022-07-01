@@ -1,7 +1,7 @@
 # Resume on AWS
 AWS의 주요 서비스들을 활용하여 배포한 정적 웹 페이지 기반 이력서
 
-[Forrest Brazeal](https://forrestbrazeal.com/)이 제안한 [Cloud Resume Challenge](https://cloudresumechallenge.dev/docs/the-challenge/)를 수행한 레포지토리입니다.
+[Forrest Brazeal](https://forrestbrazeal.com/)의 [Cloud Resume Challenge](https://cloudresumechallenge.dev/docs/the-challenge/)를 기반으로 진행하였습니다.
 
 ## 챌린지 목록 및 진행 상황
 
@@ -35,5 +35,5 @@ AWS의 주요 서비스들을 활용하여 배포한 정적 웹 페이지 기반
 
 ## Credits
 
- * [Forrest Brazeal](https://forrestbrazeal.com/)- Cloud Resume Challenge 제안([link](https://cloudresumechallenge.dev/docs/the-challenge/)). 
- * [mikepqr](https://github.com/mikepqr) - 이력서 템플릿([link](https://github.com/mikepqr/resume.md)).
+ * [Forrest Brazeal](https://forrestbrazeal.com/)- Cloud Resume Challenge 제안([link](https://cloudresumechallenge.dev/docs/the-challenge/))
+ * [mikepqr](https://github.com/mikepqr) - 이력서 템플릿([link](https://github.com/mikepqr/resume.md))
