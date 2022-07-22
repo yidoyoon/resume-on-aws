@@ -1,33 +1,28 @@
 # Resume on AWS
 AWS의 주요 서비스들을 활용하여 배포한 정적 웹 페이지 기반 이력서
 
-[Forrest Brazeal](https://forrestbrazeal.com/)의 [Cloud Resume Challenge](https://cloudresumechallenge.dev/docs/the-challenge/)의 도전과제들을 수행했습니다.
+[Forrest Brazeal](https://forrestbrazeal.com/)의 [Cloud Resume Challenge](https://cloudresumechallenge.dev/docs/the-challenge/)의 도전 과제들을 수행했습니다.
 
 ## List of Challenges
 
-각 챌린지 항목의 간략한 설명입니다.
+도전 과제를 진행하며 만든 기능, 경험한 기술 목록과 간략한 설명입니다.
 
-| **Description**                                         | **Progress** |                                    **Details**                                    |
-|---------------------------------------------------------|:------------:|:---------------------------------------------------------------------------------:|
-| AWS, GCP, Azure 관련 자격증 취득                               |      예정      | [link](https://dev-wiki.yibyeongyong.com/cloud-resume-challenge/00.certification) |
-| HTML, CSS를 활용하여 이력서 작성                                  |      완료      |    [link](https://dev-wiki.yibyeongyong.com/cloud-resume-challenge/01.resume)     |
-| S3 Bucket을 활용하여 이력 배포                                   |      완료      |                                                                                   |
-| CloudFront를 활용하여 안전한 연결 구성                              |      완료      |                                                                                   |
-| Route53을 활용하여 도메인 부여                                    |      완료      |                                                                                   |
-| Javascript를 활용하여 이력서에 방문자 수 카운트 구현                      |     진행중      |                                                                                   |
-| DynamoDB Table을 활용하여 방문자 수 저장                           |      완료      |                                                                                   |
-| Lambda, API Gateway를 활용하여 DynamoDB와 상호작용 할 API 생성       |      완료      |                                                                                   |
-| Lambda 작성 시, Python을 활용하여 작성                            |      완료      |                                                                                   |
-| Lambda 검증할 테스트 코드 작성                                    |      완료      |                                                                                   |
-| DynamoDB Table, API Gateway, Lambda를 SAM을 활용하여 배포       |     진행중      |                                                                                   |
-| Github 레포지토리에 코드 공개하기                                   |      완료      |                                                                                   |
-| Github Actions를 통해 수정된 코드가 자동으로 테스트를 진행하고 AWS에 배포되도록 구현 |     진행중      |                                                                                   |
-| Github Actions를 통해 수정된 이력서가 자동으로 S3 Bucket에 업로드 되도록 구현  |      완료      |                                                                                   |
-| 프로젝트 진행 과정 블로그로 공개하기                                    |     진행중      |                                                                                   |
+| Features | Description | Used Techs |
+|:---:|---|---|
+| HTTPS | 사용자, 엔드포인트 간의 안전한 연결 구성 | AWS CloudFront, AWS Certificate Manager |
+| View Count | 이력서에 들어갈 방문자 수 카운트 기능 구현 | Javascript, AWS API Gateway, AWS Lambda, AWS DynamoDB |
+| IaC | AWS 리소스를 코드를 통해 API로 배포 | AWS CloudFormation, AWS SAM |
+| CI/CD | Github에 갱신된 변경사항이 자동으로 배포되도록 구성 | Github Actions |
 
 ## Proejct Architecture
 
 ![](assets/img/architecture/architecture.png)
+
+## Docs
+
+프로젝트 진행 과정을 문서화하였습니다.
+
+[link](https://dev-wiki.yibyeongyong.com/projects/cloud-resume-challenge)
 
 ## Demo
 
@@ -35,5 +30,5 @@ AWS의 주요 서비스들을 활용하여 배포한 정적 웹 페이지 기반
 
 ## Credits
 
- * [Forrest Brazeal](https://forrestbrazeal.com/) - 챌린지 제안
- * [mikepqr](https://github.com/mikepqr) - 이력서 템플릿
+ * [Forrest Brazeal](https://forrestbrazeal.com/)
+ * [mikepqr](https://github.com/mikepqr)
