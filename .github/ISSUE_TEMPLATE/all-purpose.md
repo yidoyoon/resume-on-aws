@@ -7,10 +7,6 @@ assignees: ''
 
 ---
 
-### Category
-
-_No response_
-
 ### Description
 
 _No response_
