@@ -6,7 +6,7 @@ on:
     - main
 
 jobs:
-  deploy:
+  deploy-web-assets-ko:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -14,8 +14,22 @@ jobs:
       with:
         args: --acl public-read
       env:
-        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_RESUME_KO }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: 'ap-northeast-2'
-        SOURCE_DIR: 'assets/web'
+        SOURCE_DIR: 'assets/web/ko'
+
+  deploy-web-assets-en:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_RESUME_EN }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: 'us-east-1'
+          SOURCE_DIR: 'assets/web/en '
