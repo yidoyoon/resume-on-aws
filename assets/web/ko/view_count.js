@@ -2,9 +2,10 @@ let url = new URL("https://t0j7qbuiu8.execute-api.ap-northeast-2.amazonaws.com/p
 
 async function updateCount() {
     let response = await fetch(url);
-    document.getElementById("count").innerHTML = await response.text();
+    const views = await JSON.parse(response)
+    document.getElementById("count").innerHTML = views.body
 }
 
-(async() => {
+(async () => {
     await updateCount();
 })();
