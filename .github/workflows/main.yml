@@ -1,10 +1,11 @@
 name: Update Website
+description: "Resume is automatically updated when there is a change in the assets of the resume 
+(index.html file containing the actual contents of the resume, directory containing CSS files, etc.).
+Updated resumes are deployed in real time. For this, Github Actions interacts with the S3 bucket."
 
-on:
-  push:
-    branches:
+on: [push]
+  branches:
     - main
-
 jobs:
   deploy-web-assets-ko:
     runs-on: ubuntu-latest
