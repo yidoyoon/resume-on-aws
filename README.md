@@ -20,9 +20,7 @@ AWS의 주요 서비스들을 활용하여 배포한 정적 웹 페이지 기반
 
 ## Docs
 
-프로젝트 진행 과정을 문서화하였습니다.
-
-[link](https://dev-wiki.yibyeongyong.com/projects/cloud-resume-challenge)
+프로젝트 진행 과정을 [문서화](https://dev-wiki.yibyeongyong.com/projects/cloud-resume-challenge)하고있습니다.
 
 ## Demo
 
