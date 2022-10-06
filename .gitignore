@@ -1,4 +1,6 @@
-draw.io
+.aws-sam
 .idea
 .obsidian
 .vscode
+draw.io
+sam/events
