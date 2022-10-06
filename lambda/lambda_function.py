@@ -1,7 +1,7 @@
 import boto3
 
-dynamodb = boto3.resource('dynamodb', 'ap-northeast-2')
-table = dynamodb.Table('resume_visitor')
+dynamodb = boto3.resource('dynamodb', 'us-east-1')
+table = dynamodb.Table('sam_resume_visitor')
 
 
 def update_counter(table_info):
@@ -28,7 +28,7 @@ def lambda_handler(event, context):
     return {
         'statusCode': 200,
         'headers': {
-            'Access-Control-Allow-Origin': 'https://resume-ko.yibyeongyong.com'
+            'Access-Control-Allow-Origin': 'resume-en.yibyeongyong.com'
         },
         'body': new_count
     }
