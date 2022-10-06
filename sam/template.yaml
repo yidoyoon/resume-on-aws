@@ -1,0 +1,91 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Resources:
+  DynamoDBTable:
+    DeletionPolicy: Retain
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: sam_resume_visitor
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: "stats"
+          AttributeType: "S"
+      KeySchema:
+        - AttributeName: "stats"
+          KeyType: "HASH"
+
+  FuncUpdateViews:
+    DeletionPolicy: Retain
+    Type: AWS::Serverless::Function
+    Properties:
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: sam_resume_visitor
+      Runtime: python3.9
+      Handler: lambda_function.lambda_handler
+      CodeUri: ./lambda/
+      Events:
+        GetEvent:
+          Type: Api
+          Properties:
+            Path: /
+            Method: GET
+            RestApiId:
+              Ref: ApiGateway
+            Auth:
+              Authorizer: NONE
+
+  ApiGateway:
+    DeletionPolicy: Retain
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: Prod
+      Cors:
+        AllowMethods: "'*'"
+        AllowHeaders: "'*'"
+        AllowOrigin: "'https://resume-en.yibyeongyong.com'"
+      EndpointConfiguration:
+        Type: REGIONAL
+      DefinitionBody:
+        swagger: 2.0
+        info:
+          title: "SAM_UpdateViews"
+        paths:
+          /:
+            get:
+              responses:
+                "200":
+                  description: "200 response"
+              x-amazon-apigateway-integration: # https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration.html
+                responses:                     # https://stackoverflow.com/a/62507302
+                  default:
+                    statusCode: 200
+                uri:
+                  'Fn::Sub': >-
+                    arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${FuncUpdateViews.Arn}/invocations
+                credentials:
+                  Fn::GetAtt: [FunctionRole, Arn]
+                passthroughBehavior: WHEN_NO_MATCH
+                contentHandling: CONVERT_TO_TEXT
+                httpMethod: POST # The HTTP method used in the integration request. For Lambda function invocations, the value must be POST.
+                type: AWS
+
+  PermissionInvoke:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref FuncUpdateViews
+      Action: lambda:InvokeFunction
+      Principal: "*" # https://aws.amazon.com/premiumsupport/knowledge-center/api-gateway-rest-api-lambda-integrations/?nc1=h_ls
+                     # https://docs.aws.amazon.com/apigateway/latest/developerguide/permissions.html#api-gateway-control-access-iam-permissions-model-for-calling-api
+
+  FunctionRole: # https://stackoverflow.com/a/66480508
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - "apigateway.amazonaws.com"
+            Action: sts:AssumeRole

@@ -6,7 +6,7 @@ from lambda_function import update_counter
 
 @mock_dynamodb2
 def test():
-    dynamodb = boto3.resource("dynamodb", region_name="ap-northeast-2")
+    dynamodb = boto3.resource("dynamodb", region_name="us-east-1")
     table = dynamodb.Table("mock_table")
 
     dynamodb.create_table(
