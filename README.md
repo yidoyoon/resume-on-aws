@@ -16,7 +16,7 @@ AWS의 주요 서비스들을 활용하여 배포한 정적 웹 페이지 기반
 
 ## Proejct Architecture
 
-![](assets/img/architecture/architecture.png)
+<img src="assets/img/architecture/architecture.png" alt="resume-on-aws-architecture" width="900">
 
 ## Docs
 
